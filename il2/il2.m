@@ -38,8 +38,37 @@ for a = 1:3
 end
 
 %% gauss
-gauss1 = [0.4 0.01]
-gauss2 = [0.3 0.05]
-gauss3 = [0.5 0.2]
-g1 = normpdf(classes(1,1), 0.4, 0.01)
-g2 = normpdf(classes(3,1), 0.5, 0.2)
+n1 = @(x) normpdf(x, 0.4, 0.01);
+n2 = @(x) normpdf(x, 0.3, 0.05);
+n3 = @(x) normpdf(x, 0.5, 0.2);
+ctot = [c1;c2;c3];
+
+maxs = [];
+vals = [];
+for a = 1:3
+    for b = 1:length(c1)
+        val = ctot(a,b);
+        [n1(val) n2(val) n3(val)]
+        [V, I] = max([n1(val) n2(val) n3(val)]);
+        maxs(a,b) = I;
+        vals(a,b) = V;
+    end
+end
+
+maxs
+vals
+
+%% random scene
+px = 1;%@(eps) 1/2*1/4*eps + 1/4*(1/4*eps)^3 + 1/4*(1/4*eps)^2;
+pxc = @(eps, pc, n) (eps*1/4)^n * pc;
+
+pcx = @(eps, pc, n) pxc(eps, pc, n)*pc/px;
+
+eps1 = 0.5;
+p1 = 1/2;
+p2 = 1/4;
+p3 = 1/4;
+
+a=pcx(eps1, p1, 1)
+b=pcx(eps1, p2, 3)
+c=pcx(eps1, p3, 2)

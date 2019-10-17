@@ -1,14 +1,14 @@
 %% Graylevels
-f = @(x, y) x*(1-y);
-x = linspace(0, 1, 5)'
-y = x';
+f = @(x, y) x'*(1-y);
+x = linspace(0, 1, 5)
+y = 1:-1/4:0;
 
-M = f(x, y)';
+M = f(x, y);
 
 imgf = floor(M*15)
 imgr = round(M*15)
 
-imshow([uint8(imgf) uint8(imgr)],'InitialMagnification','fit')
+imagesc([uint8(imgf) uint8(imgr)])
 
 %% Orthonormal base
 e1 = [1 0 0 0]

@@ -10,7 +10,7 @@ function [imgCell] = im2segment(I)
     
     % Normalizing and inverting image
     Itemp = zeros(size(I));
-    Itemp(imgaussfilt(I,0.2) < 130) = 1;
+    Itemp(imgaussfilt(I,0.2) < 125) = 1;
     I = Itemp;
     
     % Loop over each column and check if the column contains

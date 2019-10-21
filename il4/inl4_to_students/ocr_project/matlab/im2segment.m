@@ -26,7 +26,7 @@ function [imgCell] = im2segment(I)
         % and did the previous column contain a character?
         
         if ~any(I(:,col)) && inChar
-            if col - prevCol < 10
+            if length(find(I(:, prevCol:col) == 1)) < 30
                 prevCol = col;
             else
                 % Add the character to an empty matrix with 

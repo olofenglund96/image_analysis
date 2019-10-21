@@ -3,9 +3,11 @@ function [x] = segment2features(B)
     img = B(min(I):max(I), min(J):max(J));
     
     img = imresize(img, [17 17]);
-    
-    x = [sum(img(1,:)); sum(img(2,:)); sum(img(round(end/2),:)); sum(img(end-1,:)); sum(img(end,:))]; % horizontal pixel count
-    x = [x; sum(img(:,1));  sum(img(:,2)); sum(img(:,round(end/2))); sum(img(:,end-1)); sum(img(:,end))]; % vertical pixel count
-    x = [x; sum(img, 'all')];
+    figure()
+    imagesc(img);
+    x = img(:);
+%     x = [sum(img(1,:)); sum(img(2,:)); sum(img(round(end/2),:)); sum(img(end-1,:)); sum(img(end,:))]; % horizontal pixel count
+%     x = [x; sum(img(:,1));  sum(img(:,2)); sum(img(:,round(end/2))); sum(img(:,end-1)); sum(img(:,end))]; % vertical pixel count
+%     x = [x; sum(img, 'all')];
 end
 

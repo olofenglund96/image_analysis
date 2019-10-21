@@ -20,7 +20,7 @@ load ocrsegments
 % feature vectors. We use segment2features for this, which is a function
 % we implemented in hand-in 2.
 
-S_feats = zeros(11, 100); % 7, since I use 7 features -- change appropriately!
+S_feats = zeros(17*17, 100); % 7, since I use 7 features -- change appropriately!
 for i = 1:numel(S)
     S_feat = segment2features(S{i});
     S_feats(:, i) = S_feat;

@@ -13,8 +13,6 @@ five_diffs = sum(five_diffs, 3);
 bw = imbinarize(five_diffs);
 % use bwlabel to find different areas
 areas = bwlabel(bw);
-imagesc(areas);
-figure()
 % the following code tries to combine areas close to eachother
 areacount = max(areas, [], 'all');
 distt = 100;

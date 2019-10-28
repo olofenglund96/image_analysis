@@ -1,0 +1,21 @@
+imgc = imread('honeycomb.jpg');
+imshow((imgc(:,:,)
+img = rgb2gray(imgc);
+%%
+d = floor((221-155)/2);
+el = strel('disk', d);
+im1 = rgb2gray(imclose(imgc, el));
+im2 = im1 - img;
+for i = 1:10
+    subplot(2,5,i)
+    im3 = im2 > i*10;
+    imshow(im3)
+    title(['tresh: ' num2str(i*10)]) 
+end
+
+%%
+t = 60;
+im3 = im2 > t;
+el = strel('disk', 3);
+im4 = imopen(im3, el);
+imshow(im4);
